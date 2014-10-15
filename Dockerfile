@@ -26,8 +26,8 @@ RUN mkdir /opt/jboss-as-$JBOSSAS_VERSION && \
 ENV JBOSS_HOME /opt/jboss-as
 
 # Expose the ports we're interested in
-EXPOSE 8080 9990
+EXPOSE 8080
 
 # Set the default command to run on boot
 # This will boot JbossAs in the standalone mode and bind to all interface
-CMD ["/opt/jboss-as/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+CMD ["/opt/jboss-as/bin/standalone.sh"]
