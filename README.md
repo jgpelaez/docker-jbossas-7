@@ -1,0 +1,1 @@
+# Docker base image for jboss As 7 #
