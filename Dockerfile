@@ -12,10 +12,10 @@ RUN mkdir /opt/jboss-as-$JBOSSAS_VERSION
 # Add the WildFly distribution to /opt, and make jboss-as the owner of the extracted tar content
 RUN cd /opt && \
 	wget  http://repo1.maven.org/maven2/org/jboss/as/jboss-as-dist/$JBOSSAS_VERSION/jboss-as-dist-$JBOSSAS_VERSION.tar.gz  && \
-	tar -C /opt -xzvf jboss-as-dist-$JBOSSAS_VERSION.tar.gz 
-
-# Make sure the distribution is available from a well-known place
-RUN ln -s /opt/jboss-as-$JBOSSAS_VERSION /opt/jboss-as && chown -R jboss-as /opt/jboss-as
+	tar -C /opt -xzvf jboss-as-dist-$JBOSSAS_VERSION.tar.gz  && \
+# Make sure the distribution is available from a well-known place \
+	ln -s /opt/jboss-as-$JBOSSAS_VERSION /opt/jboss-as && chown -R jboss-as /opt/jboss-as && \
+	mkdir /opt/jboss-as/standalone/data
 
 # Set the JBOSS_HOME env variable
 ENV JBOSS_HOME /opt/jboss-as
