@@ -1,7 +1,7 @@
 FROM dockerfile/java:oracle-java7
 
 # Set the JBOSSAS_VERSION env variable
-ENV JBOSSAS_VERSION 8.1.0.Final
+ENV JBOSSAS_VERSION 7.1.1.Final
 
 # Create the jbossas user and group
 RUN groupadd -r jbossas -g 433 && useradd -u 431 -r -g jbossas -d /opt/jbossas -s /sbin/nologin -c "WildFly user" jbossas
