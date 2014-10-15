@@ -15,7 +15,7 @@ RUN cd /opt && \
 	tar -C /opt -xzvf jboss-as-dist-$JBOSSAS_VERSION.tar.gz 
 
 # Make sure the distribution is available from a well-known place
-RUN ln -s /opt/jboss-as-$JBOSSAS_VERSION /opt/jboss-as && chown -R j /opt/jboss-as
+RUN ln -s /opt/jboss-as-$JBOSSAS_VERSION /opt/jboss-as && chown -R jboss-as /opt/jboss-as
 
 # Set the JBOSS_HOME env variable
 ENV JBOSS_HOME /opt/jboss-as
