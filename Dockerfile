@@ -8,8 +8,6 @@ ENV JBOSSAS_VERSION 7.1.1.Final
 #PROXYCONF1_HTTP
 #PROXYCONF2_HTTPS
 
-# Create the jboss-as user and group
-RUN groupadd -r jboss-as -g 433 && useradd -u 431 -r -g jboss-as -d /opt/jboss-as -s /sbin/nologin -c "WildFly user" jboss-as
 
 # Create directory to extract tar file to
 RUN mkdir /opt/jboss-as-$JBOSSAS_VERSION && \
@@ -19,15 +17,15 @@ RUN mkdir /opt/jboss-as-$JBOSSAS_VERSION && \
 	tar -C /opt -xzvf jboss-as-dist-$JBOSSAS_VERSION.tar.gz  && \
 	rm jboss-as-dist-$JBOSSAS_VERSION.tar.gz  && \
 # Make sure the distribution is available from a well-known place \
-	ln -s /opt/jboss-as-$JBOSSAS_VERSION /opt/jboss-as && chown -R jboss-as /opt/jboss-as && \
+	mv /opt/jboss-as-$JBOSSAS_VERSION /opt/jboss-as  && \
 	mkdir /opt/jboss-as/standalone/data
 
 # Set the JBOSS_HOME env variable
 ENV JBOSS_HOME /opt/jboss-as
 
 # Expose the ports we're interested in
-EXPOSE 8080
+EXPOSE 8080 9990
 
 # Set the default command to run on boot
 # This will boot JbossAs in the standalone mode and bind to all interface
-CMD ["/opt/jboss-as/bin/standalone.sh"]
+CMD ["/opt/jboss-as/bin/standalone.sh", "-b", "0.0.0.0"]

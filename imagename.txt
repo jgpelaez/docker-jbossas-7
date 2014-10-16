@@ -1,1 +1,1 @@
-refappsdbx/docker-jbossas-7
+jgpelaez/docker-jbossas-7
