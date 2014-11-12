@@ -23,6 +23,8 @@ RUN mkdir /opt/jboss-as-$JBOSSAS_VERSION && \
 # Set the JBOSS_HOME env variable
 ENV JBOSS_HOME /opt/jboss-as
 
+VOLUME ["/opt/jboss-as/standalone/deployments"]
+
 # Expose the ports we're interested in
 EXPOSE 8080 9990
 
